@@ -32,11 +32,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <span class="brand">Falmouth Exeter Plus</span>
+          <span class="brand"><a href="page/1.compass.html?restart=1">Falmouth Exeter Plus - Introductions</a></span>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <ul class="nav pull-right">
               <li class="">
-                <a href="/page/1.compass.html?restart=1">Restart</a>
+                <a href="{{ site.baseurl }}/page/1.compass.html?restart=1">Restart</a>
               </li>
             </ul>
           </div>
@@ -49,8 +49,21 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     
-    
-    <h2>Introductions</h2>
+     <!-- create next link
+================================================== -->
+    {% for item in site.pages %}
+      {% if item.url == page.url %}
+        {% assign next = 'true' %}
+      {% else %}
+        {% if next == 'true' %}
+          <a href="{{ site.baseurl }}{{item.url}}"class="btn btn-medium btn-primary pull-right" id="next-button">
+            Next<i class="icon-chevron-right"></i>
+          </a>
+          {% assign next = 'false' %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <h1>{% if page.title %} {{ page.title }} {% endif %}</h1>
 
   </div>
 </header>
@@ -61,7 +74,7 @@
     <!-- Docs nav
     ================================================== -->
     <div class="row">
-      <div class="span3 bs-docs-sidebar">
+      <div class="span4 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           {% for item in site.pages %}
             {% if item.url == page.url %}
@@ -79,40 +92,22 @@
     
 
       </div>
-      <div class="span9 page-content">
+      <div class="span8 page-content">
         <!-- Main induction content
         ================================================== -->
         <section id="instructions">
-          <div class="page-header">
-            <!-- create next link
-================================================== -->
-    {% for item in site.pages %}
-      {% if item.url == page.url %}
-        {% assign next = 'true' %}
-      {% else %}
-        {% if next == 'true' %}
-          <a href="{{ site.baseurl }}{{item.url}}"class="btn btn-large btn-primary pull-right">
-            Next<i class="icon-chevron-right"></i>
-          </a>
-          {% assign next = 'false' %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-            <h1>{% if page.title %} {{ page.title }} {% endif %}</h1>
-          </div>
           <div class="page-body">
             <p class="lead">{% if page.lead %} {{ page.lead }} {% endif %}</p>
             {% if page.vimeo %}
-            <div class="vimeo-embed" {% if page.thumbnail %}style="background-image: url(http://b.vimeocdn.com/ts/442/873/442873103_640.jpg); background-repeat:no-repeat;"{% endif %}>
+            <div class="embed-container" {% if page.thumbnail %}style="background-image: url(http://b.vimeocdn.com/ts/442/873/442873103_640.jpg); background-repeat:no-repeat;"{% endif %}>
               <iframe src="{{ page.vimeo }}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0" width="640" height="433" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
             </div>
             <br/>
             {% endif %}
 
             {% if page.youtube %}
-            <div class="youtube-embed">
-              <iframe width="640" height="360" src="//www.youtube.com/embed/{{page.youtube}}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+            <div class="embed-container" width="640" height="360">
+              <iframe src="//www.youtube.com/embed/{{page.youtube}}?autoplay=1&controls=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
             <br/>
             {% endif %}
@@ -132,7 +127,9 @@
     ================================================== -->
     <footer class="footer">
       <div class="container">
-        These services are provided to Falmouth University and University of Exeter by Falmouth Exeter Plus
+        
+        <img src="../bootstrap/img/uoe_logo.gif" class="logo">
+        <img src="../bootstrap/img/fu_logo.gif" class="logo">
       </div>
     </footer>
 
@@ -140,29 +137,8 @@
     ================================================== -->
     <script src="../bootstrap/js/jquery.js"></script>
     <script src="../bootstrap/js/cookies.js"></script>
+    <script src="../bootstrap/js/walkthrough.js"></script>
 
     <script>
 
-      currentstage = $('.nav-list li.active');
-      currentstage = $('.nav-list li').index(currentstage);
-
-      stage = getCookie('fxinduct_stage');
-      if (stage < currentstage) {
-        stage = currentstage;
-      }
-      createCookie('fxinduct_stage', stage);
       
-      //$('#instructions').prepend('<p>currentstage:'+currentstage+' stage:'+stage+'</p>');
-
-      boundary = stage + 1;
-      
-      $(".nav-list > li:gt("+boundary+") > a").removeAttr("href");
-      $(".nav-list > li:lt("+(boundary+1)+")").removeClass("inactive").addClass('viewed');
-
-      $('.vimeo-embed').attr('width', 300);
-      $('.vimeo-embed').attr('height', 215);
-      //$(".nav-list .active").removeAttr("href").addClass('bar');
-
-    </script>
-  </body>
-</html>
