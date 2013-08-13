@@ -1,0 +1,1 @@
+RedirectMatch permanent ^/inductions/$ http://fxplus.org/inductions/page/1.compass.html?restart=1

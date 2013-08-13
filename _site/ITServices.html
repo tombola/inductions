@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> IT Services  - Falmouth Exeter Plus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="../bootstrap/js/iframe.js"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="brand">Falmouth Exeter Plus</span>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/page/1.compass.html?restart=1">Restart</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    
+    
+    <h2>Introductions</h2>
+
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/1.compass.html">Compass</a></li>
+            
+          
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/2.it.html">IT Services</a></li>
+            
+          
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/3.library.html">Library</a></li>
+            
+          
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/4.student-support.html">Student Support Services</a></li>
+            
+          
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/5.ask.html">ASK: Academic Skills</a></li>
+            
+          
+          
+            
+            
+              <li class ="viewed"><a href="http://fxplus.org/inductions/page/6.dyslexia.html">Dyslexia</a></li>
+            
+          
+          
+        </ul>
+    
+
+      </div>
+      <div class="span9 page-content">
+        <!-- Main induction content
+        ================================================== -->
+        <section id="instructions">
+          <div class="page-header">
+            <!-- create next link
+================================================== -->
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+            <h1> IT Services </h1>
+          </div>
+          <div class="page-body">
+            <p class="lead"> IT provide computers and help you with yours </p>
+            
+
+            
+
+
+            <p>Content</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        These services are provided to Falmouth University and University of Exeter by Falmouth Exeter Plus
+      </div>
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/cookies.js"></script>
+
+    <script>
+
+      currentstage = $('.nav-list li.active');
+      currentstage = $('.nav-list li').index(currentstage);
+
+      stage = getCookie('fxinduct_stage');
+      if (stage < currentstage) {
+        stage = currentstage;
+      }
+      createCookie('fxinduct_stage', stage);
+      
+      //$('#instructions').prepend('<p>currentstage:'+currentstage+' stage:'+stage+'</p>');
+
+      boundary = stage + 1;
+      
+      $(".nav-list > li:gt("+boundary+") > a").removeAttr("href");
+      $(".nav-list > li:lt("+(boundary+1)+")").removeClass("inactive").addClass('viewed');
+
+      $('.vimeo-embed').attr('width', 300);
+      $('.vimeo-embed').attr('height', 215);
+      //$(".nav-list .active").removeAttr("href").addClass('bar');
+
+    </script>
+  </body>
+</html>
